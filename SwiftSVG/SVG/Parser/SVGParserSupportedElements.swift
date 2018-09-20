@@ -128,10 +128,11 @@ public struct SVGParserSupportedElements {
             },
             SVGPath.elementName: {
                 let returnElement = SVGPath()
-                returnElement.supportedAttributes = [
+                returnElement.supportedAttributes.add(returnElement.labelAttributes)
+                returnElement.supportedAttributes.add([
                     "d": returnElement.parseD,
                     "clip-rule": returnElement.clipRule
-                ]
+                    ])
                 returnElement.supportedAttributes.add(returnElement.identityAttributes)
                 returnElement.supportedAttributes.add(returnElement.fillAttributes)
                 returnElement.supportedAttributes.add(returnElement.strokeAttributes)
@@ -144,6 +145,7 @@ public struct SVGParserSupportedElements {
                 returnElement.supportedAttributes = [
                     "points": returnElement.points
                 ]
+                returnElement.supportedAttributes.add(returnElement.labelAttributes)
                 returnElement.supportedAttributes.add(returnElement.identityAttributes)
                 returnElement.supportedAttributes.add(returnElement.fillAttributes)
                 returnElement.supportedAttributes.add(returnElement.strokeAttributes)

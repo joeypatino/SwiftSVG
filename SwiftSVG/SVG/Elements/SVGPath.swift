@@ -138,6 +138,9 @@ final class SVGPath: SVGShapeElement, ParsesAsynchronously, DelaysApplyingAttrib
         guard let container = container else {
             return
         }
+        if let label = getLabelLayer() {
+            svgLayer.addSublayer(label)
+        }
         container.containerLayer.addSublayer(self.svgLayer)
     }
 }

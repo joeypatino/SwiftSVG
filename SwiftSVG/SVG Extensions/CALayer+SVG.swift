@@ -35,7 +35,7 @@
 #endif
 
 
-
+var svgCasheEnabled = false
 
 /**
  A set of convenience initializers that create new `CALayer` instances from SVG data.
@@ -70,7 +70,7 @@ public extension CALayer {
     public convenience init(SVGData: Data, parser: SVGParser? = nil, completion: @escaping (SVGLayer) -> ()) {
         self.init()
         
-        if let cached = SVGCache.default[SVGData.cacheKey] {
+        if svgCasheEnabled, let cached = SVGCache.default[SVGData.cacheKey] {
             DispatchQueue.main.safeAsync {
                 self.addSublayer(cached)
             }
